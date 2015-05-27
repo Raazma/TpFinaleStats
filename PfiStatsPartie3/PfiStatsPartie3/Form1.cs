@@ -99,10 +99,10 @@ namespace PfiStatsPartie3
 				SousLaCourbe = F3(p);
                          break;
                     case "F4":
-                 SousLaCourbe = F4(p);
+                SousLaCourbe = F4(p);
                          break;
                     case "F5":
-                  SousLaCourbe = F5(p);
+                 SousLaCourbe = F5(p);
                          break;
                     default:
                         break;
@@ -128,9 +128,10 @@ namespace PfiStatsPartie3
 
      private bool F3(Point p)
      {
-		 double value = -(1 / 3) * Math.Pow((p.X_ - 6), 2) + 12;
-
-		 return p.Y_ <= value;
+		 float value = -(1.0f/ 3.0f);
+		 value = value *float.Parse(Math.Pow((p.X_ - 6), 2).ToString());
+	     value += 12;  
+		 return float.Parse(p.Y_.ToString()) <= value;
      }
      private bool F4(Point p)
      {
