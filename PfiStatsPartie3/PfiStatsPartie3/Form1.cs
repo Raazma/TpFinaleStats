@@ -98,10 +98,10 @@ namespace PfiStatsPartie3
 				SousLaCourbe = F3(p);
                          break;
                     case "F4":
-                   
+                 SousLaCourbe = F4(p);
                          break;
                     case "F5":
-                    
+                  SousLaCourbe = F5(p);
                          break;
                     default:
                         break;
@@ -133,12 +133,13 @@ namespace PfiStatsPartie3
      }
      private bool F4(Point p)
      {
-       
-
+         double value = p.X_ + Math.Sin(p.X_);
+         return p.Y_ <= value;
      }
      private bool F5(Point p)
      {
-         
+         double value = Math.Cos(p.X_) + 3;
+         return p.Y_ <= value;
 
      }
 
