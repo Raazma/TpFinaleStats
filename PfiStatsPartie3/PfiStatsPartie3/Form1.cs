@@ -117,7 +117,7 @@ namespace PfiStatsPartie3
         value = Math.Pow(value, (1.0 / 3.0)) + 4;     
         return p.Y_ <= value;
      }
-
+   
      private bool F2(Point p)
      {
          double value = ((3 * (Math.Pow(((p.X_ - 7) / 5), 5))) - (5 * (Math.Pow(((p.X_ - 7) / 5), 4)))) + 3;
@@ -125,6 +125,20 @@ namespace PfiStatsPartie3
        
      }
 
+     private bool F3(Point p)
+     {
+       
+     }
+     private bool F4(Point p)
+     {
+       
+
+     }
+     private bool F5(Point p)
+     {
+         
+
+     }
 
 
 
