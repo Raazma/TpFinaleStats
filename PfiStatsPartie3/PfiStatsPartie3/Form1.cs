@@ -95,7 +95,7 @@ namespace PfiStatsPartie3
                 SousLaCourbe = F2(p);
                          break;
                     case "F3":
-                    
+				SousLaCourbe = F3(p);
                          break;
                     case "F4":
                    
@@ -127,7 +127,9 @@ namespace PfiStatsPartie3
 
      private bool F3(Point p)
      {
-       
+		 double value = -(1 / 3) * Math.Pow((p.X_ - 6), 2) + 12;
+
+		 return p.Y_ <= value;
      }
      private bool F4(Point p)
      {
