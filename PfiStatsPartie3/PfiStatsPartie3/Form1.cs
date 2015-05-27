@@ -92,7 +92,7 @@ namespace PfiStatsPartie3
                 SousLaCourbe = F1(p);   
                          break;
                     case "F2":
-                         F2(p);
+                SousLaCourbe = F2(p);
                          break;
                     case "F3":
                     
