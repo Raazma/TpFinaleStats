@@ -121,17 +121,24 @@ namespace PfiStatsPartie3
    
      private bool F2(Point p)
      {
-         double value = ((3 * (Math.Pow(((p.X_ - 7) / 5), 5))) - (5 * (Math.Pow(((p.X_ - 7) / 5), 4)))) + 3;
+         double value = (3 * (Math.Pow(((p.X_ - 7) / 5), 5))) ;
+           value = value  - (5 * (Math.Pow(((p.X_ - 7) / 5), 4))) + 3;
          return p.Y_ <= value;
        
      }
 
      private bool F3(Point p)
      {
+<<<<<<< HEAD
 		 float value = -(1.0f/ 3.0f);
 		 value = value *float.Parse(Math.Pow((p.X_ - 6), 2).ToString());
 	     value += 12;  
 		 return float.Parse(p.Y_.ToString()) <= value;
+=======
+		 double value = (-(1 / 3) * Math.Pow((p.X_ - 6), 2)) + 12;
+
+		 return p.Y_ <= value;
+>>>>>>> origin/master
      }
      private bool F4(Point p)
      {
