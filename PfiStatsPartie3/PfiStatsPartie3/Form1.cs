@@ -13,6 +13,7 @@ namespace PfiStatsPartie3
 {
     public partial class Form1 : Form
     {
+        public int nbSouslaCourbe = 0;
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace PfiStatsPartie3
 
         private void Btn_Calculate_Click(object sender, EventArgs e)
         {
-
+            lancementDesPoints();
         }
 
         private void lancementDesPoints()
@@ -38,12 +39,11 @@ namespace PfiStatsPartie3
                 p.Y_ = rnd.Next(0, GetMaxY());
 
                 if (estSousLaCourbe(p))
-                { 
-                }
+                    nbSouslaCourbe++;
                 
             }
 
-        
+            Rep.Text = nbSouslaCourbe.ToString();
         }
         private int GetMaxY()
         {
@@ -92,7 +92,7 @@ namespace PfiStatsPartie3
                 SousLaCourbe = F1(p);   
                          break;
                     case "F2":
-                   
+                         F2(p);
                          break;
                     case "F3":
                     
@@ -115,7 +115,14 @@ namespace PfiStatsPartie3
         double value = Math.Pow(p.X_, 2);
         value = value - (16 * p.X_) + 63;
         value = Math.Pow(value, (1.0 / 3.0)) + 4;     
-        return p.Y_ >= value;
+        return p.Y_ <= value;
+     }
+
+     private bool F2(Point p)
+     {
+         double value = ((3 * (Math.Pow(((p.X_ - 7) / 5), 5))) - (5 * (Math.Pow(((p.X_ - 7) / 5), 4)))) + 3;
+         return p.Y_ <= value;
+       
      }
 
 
