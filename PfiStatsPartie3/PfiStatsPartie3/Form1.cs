@@ -114,15 +114,15 @@ namespace PfiStatsPartie3
      private bool F1(Point p)
      {
         double value = Math.Pow(p.X_, 2);
-        value = value - (16 * p.X_) + 63;
+        value = value - (16.0f * p.X_) + 63.0f;
         value = Math.Pow(value, (1.0 / 3.0)) + 4;     
         return p.Y_ <= value;
      }
    
      private bool F2(Point p)
      {
-         double value = (3 * (Math.Pow(((p.X_ - 7) / 5), 5))) ;
-           value = value  - (5 * (Math.Pow(((p.X_ - 7) / 5), 4))) + 3;
+         double value = (3 * (Math.Pow(((p.X_ - 7.0f) / 5.0f), 5))) ;
+           value = value  - (5 * (Math.Pow(((p.X_ - 7.0f) / 5.0f), 4))) + 3;
          return p.Y_ <= value;
        
      }
