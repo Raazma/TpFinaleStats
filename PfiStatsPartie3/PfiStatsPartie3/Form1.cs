@@ -13,7 +13,7 @@ namespace PfiStatsPartie3
 {
     public partial class Form1 : Form
     {
-        public int nbSouslaCourbe = 0;
+        public double nbSouslaCourbe = 0;
         public Form1()
         {
             InitializeComponent();
@@ -43,7 +43,8 @@ namespace PfiStatsPartie3
                 
             }
 
-            Rep.Text = nbSouslaCourbe.ToString();
+            Rep.Text = (calculeAire() * (nbSouslaCourbe / 10000)).ToString();
+            nbSouslaCourbe = 0;
         }
         private int GetMaxY()
         {
@@ -72,14 +73,14 @@ namespace PfiStatsPartie3
             }
             return y;       
         }
-        private decimal calculeAire()
+        private double calculeAire()
         {
             //va chercher le y max calcul la largeur et l'aire du rectangle
-            decimal hauteur = GetMaxY();
-            decimal largeur = decimal.Parse(X_Max.Text) - decimal.Parse(X_min.Text);
-            decimal airB = largeur * hauteur;
+           double hauteur = GetMaxY();
+           double largeur = double.Parse(X_Max.Text) - double.Parse(X_min.Text);
+           double airB = largeur * hauteur;
 
-            return 1;
+            return airB;
         }
      private bool estSousLaCourbe(Point p) 
          {
