@@ -129,8 +129,8 @@ namespace PfiStatsPartie3
      private bool F1(Point p)
      {
         double value = Math.Pow(p.X_, 2);
-        value = value - (16.0f * p.X_) + 63.0f;
-        value = Math.Pow(value, (1.0 / 3.0)) + 4;     
+        value = value - (16 * p.X_) + 63;
+        value = Math.Pow(value, (1.0f / 3.0f)) + 4;     
         return p.Y_ <= value;
      }
    
@@ -160,10 +160,6 @@ namespace PfiStatsPartie3
          return p.Y_ <= value;
 
      }
-
-
-
-
 
     }
    
