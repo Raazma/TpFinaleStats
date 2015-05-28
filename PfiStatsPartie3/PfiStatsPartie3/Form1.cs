@@ -14,6 +14,8 @@ namespace PfiStatsPartie3
     public partial class Form1 : Form
     {
         public double nbSouslaCourbe = 0;
+		float IntervalMin;
+		float IntervalMax;
         public Form1()
         {
             InitializeComponent();
@@ -27,6 +29,8 @@ namespace PfiStatsPartie3
         private void Btn_Calculate_Click(object sender, EventArgs e)
         {
             lancementDesPoints();
+			IntervalConfiance();
+
         }
 
         private void lancementDesPoints()
@@ -39,13 +43,22 @@ namespace PfiStatsPartie3
                 p.Y_ = rnd.Next(0, GetMaxY());
 
                 if (estSousLaCourbe(p))
-                    nbSouslaCourbe++;
-                
+                    nbSouslaCourbe++;	                 
             }
 
             Rep.Text = (calculeAire() * (nbSouslaCourbe / 10000)).ToString();
             nbSouslaCourbe = 0;
         }
+		private void IntervalConfiance()
+		{
+			float Z = 1.96f;
+			float MargeErreur = Z* float.Parse(Math.Sqrt((float.Parse(Rep.Text)/100 * (1 - float.Parse(Rep.Text)/100))/calculeAire()).ToString());
+			IntervalMin = float.Parse(Rep.Text) / 100 - MargeErreur;
+			IntervalMax = float.Parse(Rep.Text) / 100 + MargeErreur;
+			Tb_MargeErreur.Text = MargeErreur.ToString();
+			Tb_IntervalMin.Text = IntervalMin.ToString();
+			Tb_IntervalMax.Text = IntervalMax.ToString();
+		}
         private int GetMaxY()
         {
             //Seulement verifier quelle fonction a ete choisi pour retourner le bon max y
@@ -129,16 +142,10 @@ namespace PfiStatsPartie3
 
      private bool F3(Point p)
      {
-<<<<<<< HEAD
 		 float value = -(1.0f/ 3.0f);
-		 value = value *float.Parse(Math.Pow((p.X_ - 6), 2).ToString());
+		 value = value * float.Parse(Math.Pow((p.X_ - 6), 2).ToString());
 	     value += 12;  
 		 return float.Parse(p.Y_.ToString()) <= value;
-=======
-		 double value = (-(1 / 3) * Math.Pow((p.X_ - 6), 2)) + 12;
-
-		 return p.Y_ <= value;
->>>>>>> origin/master
      }
      private bool F4(Point p)
      {
