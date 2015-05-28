@@ -67,7 +67,7 @@ namespace PfiStatsPartie3
             switch (Cb_Fonction.SelectedItem.ToString())
             {
                 case "F1":
-                    y = 5;
+					y = 5;
                      break;
                 case "F2":
                     y = 5;
