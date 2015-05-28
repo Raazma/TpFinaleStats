@@ -51,13 +51,15 @@ namespace PfiStatsPartie3
         }
 		private void IntervalConfiance()
 		{
+
 			float Z = 1.96f;
 			float MargeErreur = Z* float.Parse(Math.Sqrt((float.Parse(Rep.Text)/100 * (1 - float.Parse(Rep.Text)/100))/calculeAire()).ToString());
 			IntervalMin = float.Parse(Rep.Text) / 100 - MargeErreur;
 			IntervalMax = float.Parse(Rep.Text) / 100 + MargeErreur;
-			Tb_MargeErreur.Text = MargeErreur.ToString();
-			Tb_IntervalMin.Text = IntervalMin.ToString();
-			Tb_IntervalMax.Text = IntervalMax.ToString();
+			Tb_MargeErreur.Text = (MargeErreur * 100).ToString() + "%";
+			Tb_IntervalMin.Text = (IntervalMin * 100).ToString() + "%";
+			Tb_IntervalMax.Text = (IntervalMax * 100).ToString() + "%";
+
 		}
         private int GetMaxY()
         {
