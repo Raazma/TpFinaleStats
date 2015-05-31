@@ -47,6 +47,7 @@ namespace PfiStatsPartie3
             }
 
             Rep.Text = (calculeAire() * (nbSouslaCourbe / 10000)).ToString();
+            CalculProbabilité((calculeAire() * (nbSouslaCourbe / 10000)));
             nbSouslaCourbe = 0;
         }
 		private void IntervalConfiance()
@@ -90,7 +91,7 @@ namespace PfiStatsPartie3
         }
         private double calculeAire()
         {
-            //va chercher le y max calcul la largeur et l'aire du rectangle
+            //va chercher le y max calcul la largeur et l'aire du rectangle avec les bornes
            double hauteur = GetMaxY();
            double largeur = double.Parse(X_Max.Text) - double.Parse(X_min.Text);
            double airB = largeur * hauteur;
@@ -130,14 +131,14 @@ namespace PfiStatsPartie3
      {
         double value = Math.Pow(p.X_, 2);
         value = value - (16 * p.X_) + 63;
-        value = Math.Pow(value, (1.0f / 3.0f)) + 4;     
+        value = (-Math.Pow(value, (1.0f / 3.0f))) + 4;     
         return p.Y_ <= value;
      }
    
      private bool F2(Point p)
      {
-         double value = (3 * (Math.Pow(((p.X_ - 7.0f) / 5.0f), 5))) ;
-           value = value  - (5 * (Math.Pow(((p.X_ - 7.0f) / 5.0f), 4))) + 3;
+         double value = (3 * (Math.Pow(((p.X_ - 7.0) / 5.0), 5))) ;
+           value = value  + (- 5 * (Math.Pow(((p.X_ - 7.0) / 5.0), 3))) + 3;
          return p.Y_ <= value;
        
      }
@@ -161,6 +162,31 @@ namespace PfiStatsPartie3
 
      }
 
+     private void CalculProbabilité(double air)
+     {
+         switch (Cb_Fonction.SelectedItem.ToString())
+         {
+             case "F1":
+           Tb_prob.Text =( (air / 24.9026) * 100).ToString();
+                 break;
+             case "F2":
+           Tb_prob.Text = ((air / 36.2815) * 100).ToString();
+                 break;
+             case "F3":
+           Tb_prob.Text = ((air / 94.1111) * 100).ToString();        
+                 break;
+             case "F4":
+          Tb_prob.Text = ((air / 61.4956) * 100).ToString();     
+                 break;
+             case "F5":
+         Tb_prob.Text = ((air / 32.0) * 100).ToString(); 
+                 break;
+             default:
+                 break;
+         }
+     
+     }
+
     }
    
     //Structure de point avoir mon x et mon y ensemble
@@ -168,7 +194,7 @@ namespace PfiStatsPartie3
     {
 
        public double X_ { get; set; }
-        public double Y_ { get; set; }
-      
+        public double Y_ { get; set; }     
     }
+    
 }
