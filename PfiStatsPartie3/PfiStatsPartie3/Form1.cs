@@ -131,7 +131,7 @@ namespace PfiStatsPartie3
      {
         double value = Math.Pow(p.X_, 2);
         value = value - (16 * p.X_) + 63;
-        value = (-Math.Pow(value, (1.0f / 3.0f))) + 4;     
+        value = (-Math.Pow(value, (1.0 / 3.0))) + 4;     
         return p.Y_ <= value;
      }
    

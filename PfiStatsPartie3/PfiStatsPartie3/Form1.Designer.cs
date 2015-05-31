@@ -98,20 +98,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(171, 46);
+            this.label1.Location = new System.Drawing.Point(191, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 7;
-            this.label1.Text = "x min:";
+            this.label1.Text = "a:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(283, 46);
+            this.label2.Location = new System.Drawing.Point(300, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.Size = new System.Drawing.Size(16, 13);
             this.label2.TabIndex = 8;
-            this.label2.Text = "x max:";
+            this.label2.Text = "b:";
             // 
             // Rep
             // 
