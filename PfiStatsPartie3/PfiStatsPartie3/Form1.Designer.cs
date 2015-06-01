@@ -49,7 +49,7 @@
             // 
             // Btn_Calculate
             // 
-            this.Btn_Calculate.Location = new System.Drawing.Point(71, 121);
+            this.Btn_Calculate.Location = new System.Drawing.Point(16, 209);
             this.Btn_Calculate.Name = "Btn_Calculate";
             this.Btn_Calculate.Size = new System.Drawing.Size(117, 47);
             this.Btn_Calculate.TabIndex = 0;
@@ -123,11 +123,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(242, 138);
+            this.label3.Location = new System.Drawing.Point(187, 138);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Rep:";
+            this.label3.Text = "Air sous la courbe:";
             // 
             // Tb_IntervalMin
             // 

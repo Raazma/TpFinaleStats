@@ -54,7 +54,9 @@ namespace PfiStatsPartie3
 		{
 
 			float Z = 1.96f;
-			float MargeErreur = Z* float.Parse(Math.Sqrt((float.Parse(Rep.Text)/100 * (1 - float.Parse(Rep.Text)/100))/calculeAire()).ToString());
+            float MargeErreur =  1 - (float.Parse(Rep.Text)/100);
+            MargeErreur =( (float.Parse(Rep.Text) / 100) * MargeErreur) / 10000;
+            MargeErreur = Z * float.Parse(Math.Sqrt(float.Parse(MargeErreur.ToString())).ToString());
 			IntervalMin = float.Parse(Rep.Text) / 100 - MargeErreur;
 			IntervalMax = float.Parse(Rep.Text) / 100 + MargeErreur;
 			Tb_MargeErreur.Text = (MargeErreur * 100).ToString() + "%";
@@ -187,6 +189,7 @@ namespace PfiStatsPartie3
      
      }
 
+   
     }
    
     //Structure de point avoir mon x et mon y ensemble
@@ -196,5 +199,6 @@ namespace PfiStatsPartie3
        public double X_ { get; set; }
         public double Y_ { get; set; }     
     }
+    
     
 }
