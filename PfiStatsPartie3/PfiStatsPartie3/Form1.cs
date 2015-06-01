@@ -28,13 +28,19 @@ namespace PfiStatsPartie3
 
         private void Btn_Calculate_Click(object sender, EventArgs e)
         {
-            lancementDesPoints();
-			IntervalConfiance();
+            if (int.Parse(X_min.Text) <= int.Parse(X_Max.Text))
+            {
+                lancementDesPoints();
+                IntervalConfiance();
+            }
+            else
+                MessageBox.Show("a doit etre plus petit que b merci!");
 
         }
 
         private void lancementDesPoints()
         {
+            //genere 10000 point aleatoir entre les bornes voulue
             Random rnd = new Random();
             for (int i = 0; i < 10000; i++)
             {
@@ -48,7 +54,8 @@ namespace PfiStatsPartie3
 
             Rep.Text = (calculeAire() * (nbSouslaCourbe / 10000)).ToString();
             CalculProbabilité((calculeAire() * (nbSouslaCourbe / 10000)));
-            nbSouslaCourbe = 0;
+
+            nbSouslaCourbe = 0; //remet a 0 le compteur de point sous la courbe pouvoir recommencer les calcules
         }
 		private void IntervalConfiance()
 		{
@@ -59,9 +66,9 @@ namespace PfiStatsPartie3
             MargeErreur = Z * float.Parse(Math.Sqrt(float.Parse(MargeErreur.ToString())).ToString());
 			IntervalMin = float.Parse(Rep.Text) / 100 - MargeErreur;
 			IntervalMax = float.Parse(Rep.Text) / 100 + MargeErreur;
-			Tb_MargeErreur.Text = (MargeErreur * 100).ToString() + "%";
-			Tb_IntervalMin.Text = (IntervalMin * 100).ToString() + "%";
-			Tb_IntervalMax.Text = (IntervalMax * 100).ToString() + "%";
+			Tb_MargeErreur.Text = (Math.Round(MargeErreur ,4)* 100).ToString() + "%";
+			Tb_IntervalMin.Text = (Math.Round(IntervalMin,4) * 100).ToString() + "%";
+			Tb_IntervalMax.Text = (Math.Round(IntervalMax ,4)* 100).ToString() + "%";
 
 		}
         private int GetMaxY()
@@ -103,6 +110,7 @@ namespace PfiStatsPartie3
      private bool estSousLaCourbe(Point p) 
          {
      
+         //appele la fonction choisi par l'utilisateur et renvoie vrai si le point est sous la courbe
         bool SousLaCourbe = false;
 
          switch (Cb_Fonction.SelectedItem.ToString())
@@ -129,6 +137,7 @@ namespace PfiStatsPartie3
             return SousLaCourbe ;
          }
 
+        //les 5 fonctions fournis retourne vrai si le point est sous la courbe
      private bool F1(Point p)
      {
         double value = Math.Pow(p.X_, 2);
@@ -166,22 +175,24 @@ namespace PfiStatsPartie3
 
      private void CalculProbabilité(double air)
      {
+        //depasse le 100% lorsque les bornes son atteinte normal vue que nous estimon l,air sous la courbe et que nous avons pas la valeur exacte
+         //prend l'air sous la courbe des bornes et la divise par l'air total
          switch (Cb_Fonction.SelectedItem.ToString())
          {
              case "F1":
-           Tb_prob.Text =( (air / 24.9026) * 100).ToString();
+                 Tb_prob.Text = ((Math.Round((air / 24.9026), 4)) * 100).ToString() + "%"; 
                  break;
              case "F2":
-           Tb_prob.Text = ((air / 36.2815) * 100).ToString();
+                 Tb_prob.Text = ((Math.Round(air / 36.2815, 4)) * 100).ToString() + "%";
                  break;
              case "F3":
-           Tb_prob.Text = ((air / 94.1111) * 100).ToString();        
+                 Tb_prob.Text = ((Math.Round(air / 94.1111, 4)) * 100).ToString() + "%";        
                  break;
              case "F4":
-          Tb_prob.Text = ((air / 61.4956) * 100).ToString();     
+                 Tb_prob.Text = ((Math.Round(air / 61.4956, 4)) * 100).ToString() + "%";     
                  break;
              case "F5":
-         Tb_prob.Text = ((air / 32.0) * 100).ToString(); 
+         Tb_prob.Text = ((Math.Round(air / 32.0,4)) * 100).ToString() + "%"; 
                  break;
              default:
                  break;
@@ -189,6 +200,30 @@ namespace PfiStatsPartie3
      
      }
 
+     private void X_min_TextChanged(object sender, EventArgs e)
+     {
+         if (!Isdigit(X_min.Text))
+             X_min.Text = "";
+
+     }
+
+     private bool Isdigit(String x)
+     { 
+         String[] a = new String[] {"0","1", "2"," 3", "4", "5",  "6", "7", "8", "9", "10", "11"};
+         bool In = false;
+         for (int i = 0; i < a.Length; i++)
+         {
+             In |= (x == a[i]);
+             
+         }
+         return In;
+     }
+
+     private void X_Max_TextChanged(object sender, EventArgs e)
+     {
+         if (!Isdigit(X_Max.Text))
+             X_Max.Text = "";
+     }
    
     }
    
